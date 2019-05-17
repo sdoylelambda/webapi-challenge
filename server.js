@@ -20,9 +20,7 @@ server.use('/api/actions', actionRouter);
 
 
 server.get('/', (req, res) => {
-    res.send(`
-    <p>Hello from server.js</p>
-    `);
+    res.send(`<p>Hello from server.js</p>`);
 });
 
 module.exports = server;

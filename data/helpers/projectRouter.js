@@ -19,6 +19,13 @@ router.get('/', async(req, res) => {
     }
 });
 
+router.get('/:id', async (req, res) => {
+    try {
+        const project = await Projects.get(req.params.id)
+        project ? res.status(200).json(project) : res.status(404).json({ message: "no such id available"})
+    } catch(err){ res.status(500).json({ error: err});}
+})
+
 router.get('/:id/actions', async(req, res) => {
     try {
         console.log(res);
