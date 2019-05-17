@@ -12,14 +12,15 @@ server.use(helmet());
 server.use(morgan('dev'));
 server.use(express.json());
 
-
+const projectRouter = require('./data/helpers/projectRouter');
 // hmm
-// server.use('/', hubsRouter);
+// server.use('/', projectRouter);
 
 
 
 
 server.get('/', (req, res) => {
+    console.log(res)
     res.send(`
     <p>Hello from server.js</p>
     `);
