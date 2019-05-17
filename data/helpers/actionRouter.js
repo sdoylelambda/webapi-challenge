@@ -9,7 +9,26 @@ const actionRouter = express.Router();
 
 // get insert update remove
 
+// need basic get
+
+
 actionRouter.get('/', async(req, res) => {
+    try {
+        const action = await Action.get();
+        if(action) {
+            res.json(action);
+        } else {
+            res.status(404).json({ message: 'The action could not be found. '});
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Error retrieving the actions' });
+    }
+});
+
+
+
+actionRouter.get('/:id', async(req, res) => {
     try {
         console.log(res);
         // const action = await Action.get(req.query);
@@ -25,13 +44,12 @@ actionRouter.get('/', async(req, res) => {
     }
 });
 
-// insert?
 actionRouter.post('/',checkLength, async(req, res) => {
     try {
-        const action = await Actions.insert(req.body);
         const { project_id, description, notes } = req.body;
         if(project_id && description.length  &&notes){
-            return res.status(200).json(newAction)
+            const action = await Actions.insert(req.body);
+            return res.status(200).json(action)
         } else { 
             return res.status(400).json({ message: "Post failed"})}
     } catch(err){ res.status(500).json({errorMessage: err})}

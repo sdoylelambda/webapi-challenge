@@ -8,7 +8,7 @@ A. Middleware provides a way to extend features provided by Express such as erro
 
  Describe a Resource?
 
-A. A resource is an object with an associated callback.
+A. A resource is the data from the CRUD methods.
 
  What can the API return to help clients know if a request was successful?
 

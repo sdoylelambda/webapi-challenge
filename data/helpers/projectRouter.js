@@ -41,17 +41,15 @@ router.get('/:id/actions', async(req, res) => {
     }
 });
 
-// insert  Project.insert()  ?
 router.post('/', async(req, res) => {
     try {
-        const project = await Project.insert(req.body);
         const {name, description} = req.body;
+        const project = await Project.insert(req.body);
         name && description ? res.status(200).json(project) : res.status(400),json({
             message: "Name and Description both required"
         })
     } catch(err){ res.status(500).json({ error: err});}
 })
-
 
 router.put('/:id', async (req, res) => {
     try {
@@ -82,65 +80,5 @@ router.delete('/:id', async (req, res) => {
         });
     }
 });
-
-// ACTION CRUD
-
-// get insert update remove
-
-// router.get('/', async(req, res) => {
-//     try {
-//         console.log(res);
-//         const action = await Action.get(req.query);
-//         res.status(200).json(action);
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).json({ message: 'Error retrieving the actions' });
-//     }
-// });
-
-
-// router.post('./:id', async(req, res) => {
-//     try {
-//         const action = await Actions.insert(req.params.action);
-//         if(action) {
-//             res.status(204).json(action);
-//         } else {
-//             res.status(404).json({ message: 'The action could not be found. '});
-//         }
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).json({ message: 'Error retrieving the actions' });
-//     }
-// });
-
-// router.put('/:id', async (req, res) => {
-//     try {
-//         const action = await Action.update(req.params.id, req.body);
-//         if(action) {
-//             res.json(action);
-//         } else {
-//             res.status(404).json({ message: 'The action could not be found. '});
-//         }
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).json({ message: "Error updating the action."});
-//     }
-// });
-
-// router.delete('/:id', async (req, res) => {
-//     try {
-//         const count = await Actions.remove(req.params.id);
-//         if (count > 0) {
-//             res.status(201).json({ message: 'The action has been nuked' });
-//             } else {
-//             res.status(404).json({ message: 'The action could not be found' });
-//         }
-//         } catch (error) {
-//             console.log(error);
-//             res.status(500).json({
-//             message: 'Error removing the action',
-//         });
-//     }
-// });
 
 module.exports = router;
