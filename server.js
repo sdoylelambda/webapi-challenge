@@ -15,10 +15,10 @@ server.use(express.json());
 const projectRouter = require('./data/helpers/projectRouter');
 
 // hmm
-// server.use(projectRouter);
 // server.use('/api/projects', projectRouter);
 // server.use('/api/actions', projectRouter);
 // server.use('/api/', projectRouter);
+// server.use(projectRouter);
 
 
 server.get('/', (req, res) => {
