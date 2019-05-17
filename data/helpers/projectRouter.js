@@ -11,7 +11,7 @@ router.get('/', async(req, res) => {
     try {
         console.log(res);
         const project = await Project.get(req.query);
-        res.status(232).json(project);
+        res.status(200).json(project);
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: 'Error retrieving the projects' });
@@ -33,7 +33,7 @@ router.get('/:id', async(req, res) => {
     }
 });
 
-// insert  Project.insert()
+// insert  Project.insert()  ?
 router.post('./:id', async(req, res) => {
     try {
         const project = await Project.insert(req.params.project);
@@ -81,5 +81,62 @@ router.delete('/:id', async (req, res) => {
 
 // ACTION CRUD
 
+// get insert update remove
+
+router.get('/', async(req, res) => {
+    try {
+        console.log(res);
+        const action = await Action.get(req.query);
+        res.status(200).json(action);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Error retrieving the actions' });
+    }
+});
+
+// insert?
+router.post('./:id', async(req, res) => {
+    try {
+        const action = await Actions.insert(req.params.action);
+        if(action) {
+            res.status(204).json(action);
+        } else {
+            res.status(404).json({ message: 'The action could not be found. '});
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Error retrieving the actions' });
+    }
+});
+
+router.put('/:id', async (req, res) => {
+    try {
+        const action = await Action.update(req.params.id, req.body);
+        if(action) {
+            res.json(action);
+        } else {
+            res.status(404).json({ message: 'The action could not be found. '});
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Error updating the action."});
+    }
+});
+
+router.delete('/:id', async (req, res) => {
+    try {
+        const count = await Actions.remove(req.params.id);
+        if (count > 0) {
+            res.status(201).json({ message: 'The action has been nuked' });
+            } else {
+            res.status(404).json({ message: 'The action could not be found' });
+        }
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({
+            message: 'Error removing the action',
+        });
+    }
+});
 
 module.exports = router;
