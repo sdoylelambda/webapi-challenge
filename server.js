@@ -12,7 +12,14 @@ server.use(helmet());
 server.use(morgan('dev'));
 server.use(express.json());
 
-server.get('/', checkName, (req, res) => {
+
+// hmm
+// server.use('/', hubsRouter);
+
+
+
+
+server.get('/', (req, res) => {
     res.send(`
     <p>Hello from server.js</p>
     `);
