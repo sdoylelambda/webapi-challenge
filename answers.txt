@@ -4,7 +4,7 @@ A. The two parts of express that I learned about this week are routing and middl
 
  Describe Middleware?
 
-A. Middleware provides a way to extend features provided by Express such as error handling or security.
+A. Middleware provides a way to extend features provided by Express such as error handling, router or security.
 
  Describe a Resource?
 

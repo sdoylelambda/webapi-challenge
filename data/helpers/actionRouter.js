@@ -1,16 +1,9 @@
 const express = require('express');
-
 const Action = require('../helpers/actionModel');
-
 const actionRouter = express.Router();
 
-
 // ACTION CRUD
-
 // get insert update remove
-
-// need basic get
-
 
 actionRouter.get('/', async(req, res) => {
     try {
@@ -25,8 +18,6 @@ actionRouter.get('/', async(req, res) => {
         res.status(500).json({ message: 'Error retrieving the actions' });
     }
 });
-
-
 
 actionRouter.get('/:id', async(req, res) => {
     try {
@@ -89,12 +80,12 @@ function checkLength(req, res, next){
     const description = req.body.description
     
     if( description.length > 128 ){
-        return res.status(400).json({ message: "too long"})
+        return res.status(400).json({ message: "Too long."})
     }
     next();
 }
 actionRouter.use((req, res, next) => {
-    res.status(404).json({ message: "looking for some action? Not here"})
+    res.status(404).json({ message: "Router error."})
 })
 
 module.exports = actionRouter;
