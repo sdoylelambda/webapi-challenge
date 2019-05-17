@@ -20,7 +20,6 @@ const projectRouter = require('./data/helpers/projectRouter');
 
 
 server.get('/', (req, res) => {
-    console.log(res)
     res.send(`
     <p>Hello from server.js</p>
     `);
