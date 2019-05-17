@@ -13,10 +13,12 @@ server.use(morgan('dev'));
 server.use(express.json());
 
 const projectRouter = require('./data/helpers/projectRouter');
+
 // hmm
-// server.use('/', projectRouter);
-
-
+// server.use(projectRouter);
+// server.use('/api/projects', projectRouter);
+// server.use('/api/actions', projectRouter);
+// server.use('/api/', projectRouter);
 
 
 server.get('/', (req, res) => {
