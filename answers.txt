@@ -1,0 +1,19 @@
+ Mention two parts of Express that you learned about this week.
+
+A. The two parts of express that I learned about this week are routing and middleware support.
+
+ Describe Middleware?
+
+A. Middleware provides a way to extend features provided by Express such as error handling, router or security.
+
+ Describe a Resource?
+
+A. A resource is the data from the CRUD methods.
+
+ What can the API return to help clients know if a request was successful?
+
+A. An API can return a 200 code for a successful request.
+
+ How can we partition our application into sub-applications?
+
+A. We can partition our apps for different user types.
